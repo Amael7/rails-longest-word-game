@@ -12,18 +12,18 @@ class GamesController < ApplicationController
 
     url = "https://wagon-dictionary.herokuapp.com/#{@user_word}"
     user_serialized = open(url).read
-    test = nil
+    test = true
     @user = JSON.parse(user_serialized)
 
     if JSON.parse(user_serialized)['found']
       @user_word.chars.each do |letter|
-        @letters.include?(letter) ? @letters.delete(letter) : test = false
+        @letters.include?(letter) ? @letters.delete(@letters[letter]) : test = false
       end
       if test == true
         return @message = 'well done'
       elsif test = false
         return @message = 'not in the grid'
-      elsif test == nil
+      else
         return @message = 'not an english word'
       end
 
