@@ -1,3 +1,5 @@
+require 'open-uri'
+
 class GamesController < ApplicationController
   def new
   @letters = (0...10).map { ('a'..'z').to_a[rand(26)] }.join.upcase
@@ -18,10 +20,10 @@ class GamesController < ApplicationController
         @letters.include?(letter) ? @letters.delete(letter) : test = false
       end
       if test == true
-        return @message = 'well done' if test
-      elsif test == false
+        return @message = 'well done'
+      elsif test = false
         return @message = 'not in the grid'
-      else
+      elsif test == nil
         return @message = 'not an english word'
       end
 
