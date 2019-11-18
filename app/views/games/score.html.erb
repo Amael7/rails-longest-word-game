@@ -1,2 +1,17 @@
-<h1>Games#score</h1>
-<p>Find me in app/views/games/score.html.erb</p>
+<div class="container">
+  <div class="banner">
+      <h1>Game Score</h1>
+  </div>
+
+  <h3 class="display-user-word">Your Word was : <%= @user_word %></h3>
+
+  <div class="score">
+    <h3><%= "English word : #{@user['found']} " %></h3>
+    <h3><%= "Word length : #{@user['length']}" %></h3>
+  </div>
+
+  <br>
+  <br>
+
+  <%= link_to 'retry !', new_path, class: 'btn' %>
+</div>
